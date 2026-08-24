@@ -41,6 +41,32 @@ $tour = [
     ["nama" => "Surabaya", "harga" => "Rp. 500.000"],     // index ke-1
     ["nama" => "IKN",      "harga" => "Rp. 240.000"],     // index ke-2
 ];
+// Built-in Function in Array
+// PHP memiliki banyak fungsi bawaan untuk manipulasi array
+
+// sort() = mengurutkan array dari yang terkecil ke terbesar (urutan naik)
+$angka = [5, 4, 3, 2, 1];
+sort($angka);       // mengurutkan array $angka secara naik
+print_r($angka);    // output: Array ( [0] => 1 [1] => 2 [2] => 3 [3] => 4 [4] => 5 )
+echo "<br><br>";
+
+// array_merge() = menggabungkan dua atau lebih array menjadi satu array
+$list_item = ["buku", "pensil", "eraser"];
+$list_perlengkapan = ["sepatu", "baju", "topi"];
+$perlengkapan = array_merge($list_item, $list_perlengkapan); // menggabungkan $list_item dan $list_perlengkapan
+print_r($perlengkapan); // output: array gabungan dari kedua array
+echo "<br><br>";
+
+// in_array() = mengecek apakah sebuah value ada di dalam array
+// Mengembalikan true jika ditemukan, false jika tidak
+echo "Mengecek element pada array<br>";
+if (in_array("buku", $perlengkapan)) {    // cek apakah "buku" ada di array $perlengkapan
+    echo "buku adalah perlengkapan anda";  // jika true, tampilkan pesan ini
+} else {
+    echo "Sisir bukan perlengkapan anda";  // jika false, tampilkan pesan ini
+}
+
+
 
 ?>
 <!DOCTYPE html>
