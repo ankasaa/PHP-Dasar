@@ -1,0 +1,95 @@
+/* body = elemen utama halaman */
+/* display: flex = mengaktifkan flexbox untuk tata letak */
+/* justify-content: center = elemen child rata tengah horizontal */
+/* align-items: center = elemen child rata tengah vertikal */
+/* height: 100vh = tinggi = 100% viewport (seluruh layar) */
+/* margin: 0 = hapus jarak default dari browser */
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: sans-serif;
+    background-color: #f4f4f4;       /* abu-abu muda */
+    margin: 0;
+}
+
+/* .container = wadah utama kalkulator */
+/* flex-direction: column = elemen child disusun vertikal (atas ke bawah) */
+/* gap: 20px = jarak antar elemen child */
+/* border-radius: 20px = sudut melengkung */
+/* box-shadow = bayangan pada container */
+/* max-width: 350px = lebar maksimal 350px */
+/* width: 100% = lebar ikut parent (responsive) */
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;           /* putih */
+    padding: 20px;                    /* jarak dalam 20px */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0,1);
+    text-align: center;               /* teks rata tengah */
+    max-width: 350px;
+    width: 100%;
+}
+
+/* h1 = judul "Calculator" */
+/* margin-bottom: 20px = jarak bawah 20px */
+/* font-size: 24px = ukuran huruf */
+h1{
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* .calculator-form = form kalkulator */
+/* flex-direction: column = input disusun vertikal */
+/* gap: 15px = jarak antar input */
+.calculator-form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Selector ganda: input text DAN select dalam form */
+/* box-sizing: border-box = padding tidak menambah lebar total */
+.calculator-form input[type="text"], 
+.calculator-form select{
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: 1px solid #ccc;           /* garis abu-abu */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* .calculator-btn = tombol "Hitung" */
+/* background-color: #28A745 = hijau */
+/* cursor: pointer = kursor jadi tangan saat hover */
+/* transition = animasi perubahan warna 0.4 detik */
+.calculator-btn{
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28A745;        /* hijau */
+    color: white;                     /* teks putih */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+/* :hover = saat kursor di atas tombol */
+/* warna hijau lebih gelap sebagai efek hover */
+.calculator-btn:hover{
+    background-color: #218838;        /* hijau gelap */
+}
+
+/* .result = area tampilan hasil */
+/* font-weight: bold = teks tebal */
+.result{
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f8f8f9;        /* abu-abu sangat muda */
+    border-radius: 5px;
+    border: 1px solid #fff;           /* garis putih */
+}
