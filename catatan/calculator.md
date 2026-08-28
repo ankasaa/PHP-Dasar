@@ -1,5 +1,7 @@
 # Catatan: Calculator Sederhana
 
+---
+
 ## Alur Kerja
 
 ```
@@ -32,7 +34,7 @@ PHP cek: isset($_POST["calculate"])?
 
 ## BAGIAN 1: PHP
 
-PHP diproses **duluan oleh server** sebelum HTML dikirim ke browser.
+> PHP diproses **duluan oleh server** sebelum HTML dikirim ke browser.
 
 ---
 
@@ -42,11 +44,11 @@ PHP diproses **duluan oleh server** sebelum HTML dikirim ke browser.
 $result = '';
 ```
 
-| Komponen | Penjelasan |
-|----------|------------|
-| `$result` | Variabel — kotak untuk menyimpan sesuatu |
-| `=` | Assignment operator — simpan nilai ke variabel |
-| `''` | String kosong — tidak ada isi |
+| Komponen   | Penjelasan                          |
+| :--------- | :---------------------------------- |
+| `$result`  | Variabel — kotak untuk menyimpan sesuatu |
+| `=`        | Assignment operator — simpan nilai ke variabel |
+| `''`       | String kosong — tidak ada isi       |
 
 **Cara baca:** "Buat kotak bernama `$result`, isi kosong dulu."
 
@@ -76,10 +78,10 @@ isset($_POST["calculate"])
 
 **Contoh konkret:**
 
-| Situasi | `$_POST["calculate"]` | `isset()` |
-|---------|----------------------|-----------|
-| User baru buka halaman | Kosong/tidak ada | `false` |
-| User klik tombol "Hitung" | Ada | `true` |
+| Situasi                        | `$_POST["calculate"]` | `isset()` |
+| :----------------------------- | :-------------------- | :-------- |
+| User baru buka halaman         | Kosong/tidak ada      | `false`   |
+| User klik tombol "Hitung"      | Ada                   | `true`    |
 
 > **Analogi:** `isset()` seperti mengecek **ada tidaknya surat** di mailbox. Kalau ada, baru dibuka isinya.
 
@@ -94,19 +96,18 @@ $operator = $_POST["operator"];
 ```
 
 **Cara baca:**
+
 - Line 10: "Ambil angka pertama dari input `name="num1"`, simpan di `$num1`"
 - Line 11: "Ambil angka kedua dari input `name="num2"`, simpan di `$num2`"
 - Line 12: "Ambil operator dari select `name="operator"`, simpan di `$operator`"
 
 **Koneksi HTML ke PHP:**
 
-```
-HTML                          PHP
-────                          ───
-<input name="num1">    →     $_POST["num1"]
-<input name="num2">    →     $_POST["num2"]
-<select name="operator"> →   $_POST["operator"]
-```
+| HTML                       | PHP                |
+| :------------------------- | :----------------- |
+| `<input name="num1">`     | `$_POST["num1"]`   |
+| `<input name="num2">`     | `$_POST["num2"]`   |
+| `<select name="operator">`| `$_POST["operator"]` |
 
 > **Aturan penting:** `name=""` di HTML = `$_POST[""]` di PHP. **Harus sama!**
 
@@ -133,11 +134,11 @@ is_numeric($num1)  &&  is_numeric($num2)
 **Contoh:**
 
 | `$num1` | `$num2` | `is_numeric($num1)` | `is_numeric($num2)` | `&&` (hasil) |
-|---------|---------|--------------------|--------------------|--------------|
-| `"5"` | `"3"` | `true` | `true` | `true` |
-| `"5"` | `"abc"` | `true` | `false` | `false` |
-| `"abc"` | `"3"` | `false` | `true` | `false` |
-| `"abc"` | `"xyz"` | `false` | `false` | `false` |
+| :------ | :------ | :------------------ | :------------------ | :----------- |
+| `"5"`   | `"3"`   | `true`              | `true`              | `true`       |
+| `"5"`   | `"abc"` | `true`              | `false`             | `false`      |
+| `"abc"` | `"3"`   | `false`             | `true`              | `false`      |
+| `"abc"` | `"xyz"` | `false`             | `false`             | `false`      |
 
 > **Analogi:** `&&` seperti pintu yang butuh **dua kunci** untuk dibuka. Satu kunci saja tidak cukup.
 
@@ -156,6 +157,7 @@ switch ($operator){
 **Cara baca:** "Cek isi `$operator`, cocokkan dengan salah satu `case`"
 
 **Analogi:** Seperti **mesin penjual otomatis**:
+
 - Tekan tombol "1" → keluar produk A
 - Tekan tombol "2" → keluar produk B
 
@@ -248,16 +250,16 @@ break;
 
 **Cara baca:** "Kalau input bukan angka, tampilkan pesan error."
 
-| Input | `is_numeric()` | Hasil |
-|-------|----------------|-------|
-| `"10"` | `true` | Kalkulasi berjalan |
-| `"abc"` | `false` | `"angka tidak valid"` |
+| Input  | `is_numeric()` | Hasil                |
+| :----- | :------------- | :------------------- |
+| `"10"` | `true`         | Kalkulasi berjalan   |
+| `"abc"`| `false`        | `"angka tidak valid"`|
 
 ---
 
 ## BAGIAN 2: HTML
 
-HTML dikirim ke browser **setelah PHP selesai diproses**.
+> HTML dikirim ke browser **setelah PHP selesai diproses**.
 
 ---
 
@@ -269,10 +271,10 @@ HTML dikirim ke browser **setelah PHP selesai diproses**.
 
 **Cara baca:** "Buat form yang dikirim ke `index.php` menggunakan method POST."
 
-| Komponen | Penjelasan |
-|----------|------------|
-| `action="/calculator/index.php"` | Form dikirim ke halaman ini |
-| `method="post"` | Data dikirim tersembunyi (bukan di URL) |
+| Komponen                         | Penjelasan                    |
+| :------------------------------- | :---------------------------- |
+| `action="/calculator/index.php"` | Form dikirim ke halaman ini   |
+| `method="post"`                  | Data dikirim tersembunyi (bukan di URL) |
 
 **POST vs GET:**
 
@@ -293,10 +295,10 @@ POST: (data tersembunyi di body request)                ← tidak terlihat
 **Cara baca per bagian:**
 
 ```
-<input type="text"     ← input teks biasa
-       name="num1"     ← nama ini yang jadi $_POST["num1"] di PHP
-       placeholder="Angka ke 1"  ← teks samar di dalam input
-       value="..."     ← nilai awal input (diisi oleh PHP)
+<input type="text"              ← input teks biasa
+       name="num1"              ← nama ini yang jadi $_POST["num1"] di PHP
+       placeholder="Angka ke 1" ← teks samar di dalam input
+       value="..."              ← nilai awal input (diisi oleh PHP)
 ```
 
 **Bagian PHP di dalam `value`:**
@@ -316,10 +318,10 @@ isset($_POST['num1'])  ?  $_POST['num1']  :  ''
 
 **Contoh:**
 
-| Situasi | `$_POST['num1']` | Hasil `value=""` |
-|---------|-----------------|------------------|
-| Baru buka halaman | Kosong | `value=""` |
-| Isi "5", submit, kembali | `"5"` | `value="5"` |
+| Situasi                          | `$_POST['num1']` | Hasil `value=""` |
+| :------------------------------- | :--------------- | :--------------- |
+| Baru buka halaman                | Kosong           | `value=""`       |
+| Isi "5", submit, kembali         | `"5"`            | `value="5"`      |
 
 > **Analogi:** Seperti **memory** di kalkulator. Setelah dihitung, angka sebelumnya masih terlihat.
 
@@ -380,10 +382,10 @@ $_POST['operator'] == 'add'     ← "Dan apakah nilainya 'add'?"
 <button class="calculator-btn" type="submit" name="calculate">Hitung</button>
 ```
 
-| Komponen | Penjelasan |
-|----------|------------|
-| `type="submit"` | Tombol ini untuk mengirim form |
-| `name="calculate"` | Ini yang dicek oleh `$_POST['calculate']` di PHP |
+| Komponen             | Penjelasan                                    |
+| :------------------- | :-------------------------------------------- |
+| `type="submit"`      | Tombol ini untuk mengirim form                |
+| `name="calculate"`   | Ini yang dicek oleh `$_POST['calculate']` di PHP |
 
 **Koneksi ke PHP:**
 
@@ -405,16 +407,19 @@ PHP: if(isset($_POST["calculate"]))
 **`htmlspecialchars($result)` — Kenapa perlu?**
 
 Bayangkan `$result` berisi:
+
 ```php
 $result = "<script>alert('Hacked!')</script>";
 ```
 
 Tanpa `htmlspecialchars()`:
+
 ```html
 <div>Result : <script>alert('Hacked!')</script></div>  ← BAHAYA!
 ```
 
 Dengan `htmlspecialchars()`:
+
 ```html
 <div>Result : &lt;script&gt;alert(&#039;Hacked!&#039;)&lt;/script&gt;</div>  ← AMAN
 ```
@@ -425,7 +430,7 @@ Dengan `htmlspecialchars()`:
 
 ## BAGIAN 3: CSS
 
-CSS mengatur **tampilan** halaman.
+> CSS mengatur **tampilan** halaman.
 
 ---
 
@@ -443,14 +448,14 @@ body{
 }
 ```
 
-| Properti | Arti |
-|----------|------|
-| `display: flex` | Aktifkan flexbox (susunan fleksibel) |
-| `justify-content: center` | Rata tengah horizontal |
-| `align-items: center` | Rata tengah vertikal |
-| `height: 100vh` | Tinggi = 100% viewport (seluruh layar) |
-| `background-color: #f4f4f4` | Warna abu-abu muda |
-| `margin: 0` | Hapus jarak dari tepi browser |
+| Properti              | Arti                                            |
+| :-------------------- | :---------------------------------------------- |
+| `display: flex`       | Aktifkan flexbox (susunan fleksibel)            |
+| `justify-content: center` | Rata tengah horizontal                     |
+| `align-items: center` | Rata tengah vertikal                            |
+| `height: 100vh`       | Tinggi = 100% viewport (seluruh layar)          |
+| `background-color: #f4f4f4` | Warna abu-abu muda                        |
+| `margin: 0`           | Hapus jarak dari tepi browser                   |
 
 **`100vh` vs `100%`:**
 
@@ -478,15 +483,15 @@ body{
 }
 ```
 
-| Properti | Arti |
-|----------|------|
-| `flex-direction: column` | Susun elemen child secara vertikal |
-| `gap: 20px` | Jarak antar elemen = 20px |
-| `padding: 20px` | Jarak dalam container = 20px |
-| `border-radius: 20px` | Sudut melengkung |
-| `box-shadow` | Bayangan di bawah container |
-| `max-width: 350px` | Lebar maksimal 350px |
-| `width: 100%` | Lebar ikut parent (responsive) |
+| Properti               | Arti                                     |
+| :--------------------- | :--------------------------------------- |
+| `flex-direction: column` | Susun elemen child secara vertikal     |
+| `gap: 20px`            | Jarak antar elemen = 20px                |
+| `padding: 20px`        | Jarak dalam container = 20px             |
+| `border-radius: 20px`  | Sudut melengkung                         |
+| `box-shadow`           | Bayangan di bawah container              |
+| `max-width: 350px`     | Lebar maksimal 350px                     |
+| `width: 100%`          | Lebar ikut parent (responsive)           |
 
 **Visual:**
 
@@ -522,11 +527,11 @@ body{
 }
 ```
 
-| Properti | Arti |
-|----------|------|
-| `display: flex` | Aktifkan flexbox untuk form |
-| `flex-direction: column` | Susun input secara vertikal |
-| `gap: 15px` | Jarak antar input = 15px |
+| Properti               | Arti                                     |
+| :--------------------- | :--------------------------------------- |
+| `display: flex`        | Aktifkan flexbox untuk form              |
+| `flex-direction: column` | Susun input secara vertikal            |
+| `gap: 15px`            | Jarak antar input = 15px                 |
 
 ---
 
@@ -546,13 +551,13 @@ body{
 
 **Selector ganda:** Koma `,` = "terapkan style ke **kedua** selector"
 
-| Properti | Arti |
-|----------|------|
-| `padding: 10px` | Jarak dalam input = 10px |
-| `font-size: 16px` | Ukuran huruf = 16px |
-| `border-radius: 10px` | Sudut input melengkung |
-| `border: 1px solid #ccc` | Garis abu-abu tipis |
-| `box-sizing: border-box` | Padding tidak menambah lebar total |
+| Properti               | Arti                                     |
+| :--------------------- | :--------------------------------------- |
+| `padding: 10px`        | Jarak dalam input = 10px                 |
+| `font-size: 16px`      | Ukuran huruf = 16px                      |
+| `border-radius: 10px`  | Sudut input melengkung                   |
+| `border: 1px solid #ccc` | Garis abu-abu tipis                    |
+| `box-sizing: border-box` | Padding tidak menambah lebar total     |
 
 **`box-sizing: border-box` vs default:**
 
@@ -580,13 +585,13 @@ width: 100% (sudah termasuk padding & border)
 }
 ```
 
-| Properti | Arti |
-|----------|------|
-| `padding: 10px 20px` | Atas-bawah: 10px, Kiri-kanan: 20px |
-| `background-color: #28A745` | Warna hijau |
-| `color: white` | Teks putih |
-| `cursor: pointer` | Kursor jadi tangan saat hover |
-| `transition: background-color 0.4s ease` | Animasi perubahan warna 0.4 detik |
+| Properti                                | Arti                                     |
+| :-------------------------------------- | :--------------------------------------- |
+| `padding: 10px 20px`                    | Atas-bawah: 10px, Kiri-kanan: 20px      |
+| `background-color: #28A745`             | Warna hijau                              |
+| `color: white`                          | Teks putih                               |
+| `cursor: pointer`                       | Kursor jadi tangan saat hover            |
+| `transition: background-color 0.4s ease` | Animasi perubahan warna 0.4 detik      |
 
 ---
 
@@ -622,8 +627,8 @@ Dengan `transition: 0.4s`, perubahan warna terjadi **halus**.
 }
 ```
 
-| Properti | Arti |
-|----------|------|
-| `font-size: 18px` | Ukuran huruf lebih besar dari input |
-| `font-weight: bold` | Teks tebal |
-| `background-color: #f8f8f9` | Abu-abu sangat muda (hampir putih) |
+| Properti               | Arti                                     |
+| :--------------------- | :--------------------------------------- |
+| `font-size: 18px`      | Ukuran huruf lebih besar dari input      |
+| `font-weight: bold`    | Teks tebal                               |
+| `background-color: #f8f8f9` | Abu-abu sangat muda (hampir putih)  |
